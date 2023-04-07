@@ -8,12 +8,18 @@ function App() {
   let [따봉,따봉변경]=useState(0);
   let posts = '강남 고기 맛집';
   
+  function 제목바꾸기(){
+    var newArray = [...글제목];
+    newArray[0]="여자코트추천";
+    글제목변경(newArray);
+  }
+
   return (
     <div className="App">
       <div className="black-nav">
         <div style={{color:'blue',fontSize:'30px'}}>개발 Blog</div>
       </div>
-      <button onClick={()=>{글제목변경(['여자 코트 추천','강남 우동 맛집','연신내고독한늑대썰'])}}>버튼</button>
+      <button onClick={제목바꾸기}>버튼</button>
       <div className='list'>
         <h3>{글제목[0]} <span onClick={()=>{ 따봉변경(따봉 + 1) }}>👍</span>{따봉} </h3>
         <p>4월4일 발행</p>
