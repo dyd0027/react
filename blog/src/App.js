@@ -6,12 +6,20 @@ import './App.css';
 function App() {
   let [글제목,글제목변경] = useState(['남자 코트 추천','강남 우동 맛집','연신내고독한늑대썰']);
   let [따봉,따봉변경]=useState(0);
+  
+  let [modal,modal변경] = useState(false);
+
   let posts = '강남 고기 맛집';
   
   function 제목바꾸기(){
     var newArray = [...글제목];
     newArray[0]="여자코트추천";
     글제목변경(newArray);
+  }
+  function openCloseModal(){
+    modal===true
+    ? modal변경(false)
+    :modal변경(true)
   }
 
   return (
@@ -31,11 +39,16 @@ function App() {
         <hr/>
       </div>
       <div className='list'>
-        <h3>{글제목[2]}</h3>
+        <h3 onClick={()=>{modal변경(true)}}>{글제목[2]}</h3>
         <p>4월4일 발행</p>
         <hr/>
       </div>
-      <Modal></Modal>
+      <button onClick={openCloseModal}>모달창버트</button>
+      {
+        modal === true
+        ? <Modal></Modal>
+        : null
+      }
      
     </div>
   );
