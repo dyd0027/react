@@ -22,6 +22,14 @@ function App() {
     :modal변경(true)
   }
 
+  function 반복된UI(){
+    var 어레이 = [];
+    for(var i=0;i<3;i++){
+      어레이.push(<div>ㅎㅇㅎㅇ</div>)
+    }
+    return 어레이
+  }
+
   return (
     <div className="App">
       <div className="black-nav">
@@ -43,6 +51,22 @@ function App() {
         <p>4월4일 발행</p>
         <hr/>
       </div>
+      {
+        반복된UI()
+      }
+      {
+        글제목.map((a)=>{
+          return (
+          <div className='list'>
+            <h3>{a} <span onClick={()=>{ 따봉변경(따봉 + 1) }}>👍</span>{따봉} </h3>
+            <p>4월4일 발행</p>
+            <hr/>
+          </div>
+          )
+        })
+      }
+      
+      
       <button onClick={openCloseModal}>모달창버트</button>
       {
         modal === true
