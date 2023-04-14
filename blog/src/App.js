@@ -8,6 +8,7 @@ function App() {
   let [따봉,따봉변경]=useState(0);
   
   let [modal,modal변경] = useState(false);
+  let [누른제목,누른제목변경] = useState(0);
 
   let posts = '강남 고기 맛집';
   
@@ -55,10 +56,10 @@ function App() {
         반복된UI()
       }
       {
-        글제목.map((a)=>{
+        글제목.map((a,i)=>{
           return (
           <div className='list'>
-            <h3>{a} <span onClick={()=>{ 따봉변경(따봉 + 1) }}>👍</span>{따봉} </h3>
+            <h3  onClick={()=>{누른제목변경(i)}}>{a} <span onClick={()=>{ 따봉변경(따봉 + 1) }}>👍</span>{따봉} </h3>
             <p>4월4일 발행</p>
             <hr/>
           </div>
@@ -66,12 +67,15 @@ function App() {
         })
       }
       
-      
+      {/* <button onClick={()=>{누른제목변경(0)}}>버튼1</button>
+      <button onClick={()=>{누른제목변경(1)}}>버튼2</button>
+      <button onClick={()=>{누른제목변경(2)}}>버튼3</button> */}
+
       {/* <button onClick={openCloseModal}>모달창버트</button> */}
       <button onClick={()=>{modal변경(!modal)}}>모달창버트</button>
       {
         modal === true
-        ? <Modal 글제목={글제목}></Modal>
+        ? <Modal 글제목={글제목} 누른제목={누른제목}></Modal>
         : null
       }
      
@@ -82,7 +86,7 @@ function App() {
 function Modal(props){
   return(
     <div className='modal'>
-    <h2>{props.글제목[0]}</h2>
+    <h2>{props.글제목[props.누른제목]}</h2>
     <p>날짜</p>
     <p>상세내용</p>
   </div>
