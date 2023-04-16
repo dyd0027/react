@@ -19,6 +19,11 @@ function App() {
     newArray[0]="여자코트추천";
     글제목변경(newArray);
   }
+  function 추가(){
+    var newArray = [...글제목];
+    newArray.push(입력값);
+    글제목변경(newArray);
+  }
   function openCloseModal(){
     modal===true
     ? modal변경(false)
@@ -68,8 +73,13 @@ function App() {
           )
         })
       }
-      {입력값}
-      <input onChange={(e)=>{입력값변경(e.target.value)}}></input>
+      <div className='publish'>
+        <input onChange={(e)=>{입력값변경(e.target.value)}}/>
+        <button onClick={()=>{추가()}}>저장</button>
+      </div>
+
+      {/* {입력값}
+      <input onChange={(e)=>{입력값변경(e.target.value)}}></input> */}
 
       {/* <button onClick={openCloseModal}>모달창버트</button> */}
       <button onClick={()=>{modal변경(!modal)}}>모달창버트</button>
