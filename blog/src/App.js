@@ -10,6 +10,8 @@ function App() {
   let [modal,modal변경] = useState(false);
   let [누른제목,누른제목변경] = useState(0);
 
+  let [입력값,입력값변경] = useState('');
+
   let posts = '강남 고기 맛집';
   
   function 제목바꾸기(){
@@ -26,7 +28,7 @@ function App() {
   function 반복된UI(){
     var 어레이 = [];
     for(var i=0;i<3;i++){
-      어레이.push(<div>ㅎㅇㅎㅇ</div>)
+      어레이.push(<div key={i}>ㅎㅇㅎㅇ</div>)
     }
     return 어레이
   }
@@ -58,7 +60,7 @@ function App() {
       {
         글제목.map((a,i)=>{
           return (
-          <div className='list'>
+          <div className='list' key={i}>
             <h3  onClick={()=>{누른제목변경(i)}}>{a} <span onClick={()=>{ 따봉변경(따봉 + 1) }}>👍</span>{따봉} </h3>
             <p>4월4일 발행</p>
             <hr/>
@@ -66,10 +68,8 @@ function App() {
           )
         })
       }
-      
-      {/* <button onClick={()=>{누른제목변경(0)}}>버튼1</button>
-      <button onClick={()=>{누른제목변경(1)}}>버튼2</button>
-      <button onClick={()=>{누른제목변경(2)}}>버튼3</button> */}
+      {입력값}
+      <input onChange={(e)=>{입력값변경(e.target.value)}}></input>
 
       {/* <button onClick={openCloseModal}>모달창버트</button> */}
       <button onClick={()=>{modal변경(!modal)}}>모달창버트</button>
