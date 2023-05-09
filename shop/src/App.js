@@ -56,7 +56,7 @@ function App() {
     <Route path="/:id">
           <div>아무거나</div>
     </Route>
-    </Switch>
+    </Switch> 
     </div>
   );
 }
