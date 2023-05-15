@@ -49,8 +49,11 @@ function App() {
         </div>
       </div>
     </Route>
-    <Route path="/detail">
-      <Detail/>
+    <Route path="/detail/:id">
+    {shoes?
+      <Detail shoes={shoes} />
+      : <p>No data here</p>
+    }
     </Route>
 
     <Route path="/:id">
