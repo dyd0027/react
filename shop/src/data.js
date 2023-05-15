@@ -12,7 +12,7 @@ export default[
         price : 110000
     },
     {
-        id : 3,
+        id : 2,
         title : "Grey Yellow",
         content : "Born in The States",
         price : 130000
