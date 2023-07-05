@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+function AppJSX() {
   const name ='용휘';
   const list = ['가가','나나','다다'];
   return (
@@ -21,4 +21,4 @@ function App() {
   );
 }
 
-export default App;
+export default AppJSX;
