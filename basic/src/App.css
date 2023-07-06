@@ -6,7 +6,10 @@
   text-align: center;
   padding: 1rem;
   background-color: #ebebeb;
-  
+  border-radius: 20px;
+  box-shadow: 10px 11px 18px -3px rgba(13,8,8,0.76);
+  -webkit-box-shadow: 10px 11px 18px -3px rgba(13,8,8,0.76);
+  -moz-box-shadow: 10px 11px 18px -3px rgba(13,8,8,0.76);
 }
 .photo{
   width: 200px;
