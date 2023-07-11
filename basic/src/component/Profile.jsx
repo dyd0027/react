@@ -5,6 +5,7 @@ export default function Profile(props){
         <img 
         className="photo"   
         src={props.url}/>
+        <span className="new">New</span>
         <h1>{props.name}</h1>
         <p>{props.title}</p>
     </div>);
