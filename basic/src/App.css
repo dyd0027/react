@@ -2,7 +2,6 @@
   color: orange;
 }
 .profile{
-  position: relative;
   width: 300px;
   text-align: center;
   padding: 1rem;
@@ -17,6 +16,12 @@
   width: 200px;
   height: 200px;
   border-radius: 100%;
+}
+.avartar{
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin:auto;
 }
 .new {
   position: absolute;
