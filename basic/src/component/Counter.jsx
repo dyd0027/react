@@ -7,6 +7,13 @@ export default function Counter(){
             <span className="number">{num}</span>
             <button className="button" onClick={()=>{
                 setNum(num+1);
+                setNum((prev)=>prev+1);
+                setNum(num+1);
+                setNum((prev)=>prev+1);
+                setNum((prev)=>prev+1);
+                setNum((prev)=>prev+1);
+                setNum(num+1);
+                setNum((prev)=>prev+1);
             }}>Add+</button>
         </div>
     )
