@@ -1,5 +1,5 @@
 import { useState } from "react"
-
+import { v4 as uuid } from "uuid";
 export default function AddTodo(prov){
     const [text,setText] = useState('');
     const handleChange = (e) => {
@@ -8,7 +8,7 @@ export default function AddTodo(prov){
     const handleSubmit = (e) => {
         e.preventDefault();
         if(text.trim().length===0) return;
-        prov.onAdd({id:"1", text:text, status:"active"});
+        prov.onAdd({id:uuid(), text:text, status:"active"});
         setText('');
     }
     return(
