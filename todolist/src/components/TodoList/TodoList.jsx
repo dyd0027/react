@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import AddTodo from '../AddtTodo/AddTodo';
+import AddTodo from '../AddTodo/AddTodo';
 import Todo from '../Todo/Todo';
 import styles from './TodoList.module.css';
 
