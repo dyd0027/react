@@ -10,7 +10,7 @@ export default function Header({ filters, filter, onFilterChange }) {
   return (
     <header className={styles.header}>
       <ul className={styles.filters}>
-        <button onClick={toggleDarkMode}>
+        <button onClick={toggleDarkMode} className={styles.toggle}>
         {!darkMode && <HiMoon/>}
         {darkMode && <HiSun/>}
         </button>
