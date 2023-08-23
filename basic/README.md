@@ -71,3 +71,76 @@
 ### 4.20
 - useEffect은 데이터가 동적일 때 사용함.
   - useEffect(()=>{~~~~~~},[boolean])
+
+### 5.3
+- 함수 많이 내장되어 있음
+- 마우스 움직이는 함수 onPointerMove를 div에 적어줘서 동작 처리하면 됨.
+
+### 5.4
+- 연관있는 변수라면 개별적으로 state로 만들지 말고 배열로 만들어쓰면 됨
+  - cont [position, setPosition] = useState({x:0, y:0});
+  - 특정한 값만 바꾸고 싶다면
+	  - setPosition((prev) => ({...prev, x:100}));
+   
+### 5.6
+- Object안에 Object가 있을경우
+	- setPosition((prev) => ({...prev, 배열1 :{...prev.배열1,x:100}}));
+- ...: 복사한다는 의미
+
+### 5.8
+- Object안에 Array가 있을경우
+	- setPerson((pre) => ({...pre, pre.mentors.map((mentor)=>({~~~~ return mentor관련}))}))
+- 리엑트는 불변성을 유지해야 하므로 변경이 발생한다면 배열과객체 전체를 바꿔줘야 갱신이 됨.
+
+### 5.10
+- 삭제할때는 .filter 사용
+- 추가 할 때는 배열 선언하는거와 똑같이 해주면 됨 
+   - 앞에다가 추가: setPerson((pre)=>({
+            ...pre, mentors:[{name:addName, title:addTitle}, ...pre.mentors]
+          }))
+  - 뒤에다가 추가: setPerson((pre)=>({
+            ...pre, ...pre.mentors, mentors:[{name:addName, title:addTitle}]
+          }))
+    
+### 5.12 중요
+- reducer: 여러 컴포넌트에서 사용할 수 있는 함수들 모음집같은거
+   - 함수명(전 컴포넌트에서 넘겨주는 객체, action){여기서 리턴해 주는 값들은 setState와 같음};
+   - useState랑 사용법 비슷함 cont[초기값으로 쓸 변수 명,해당컴포넌트에서 쓸 함수 명(ex.dispatch)] = useReducer(reducer함수명,초기값으로 선언한 값들)
+   - dispatch({reducer함수에서 사용할 매개변수안에 있는 값들});
+
+### 5.13
+- Immer: useState사용하면 객체들 전부 복사해서 새로 만들어야하는 불편함 해소한 라이브러리
+   - yarn add immer use-immer
+   - useState랑 사용하는 법 똑같은데 객체 한개한개 찾아서 업데이트가 아님.
+   - updateImmer형식으로 명명해줌.
+
+### 5.14
+- Form태그 사용할 때 e.preventDefault()를 사용하지 않으면 페이지 refresh 일어남.
+- Form태그를 사용할 때에는 useState를 사용해서 상태를 저장해야함.
+- const {id, value} = e.target -> 해당 이벤트가 일어나는 태그의 id와 value값을 가져온다는 뜻
+
+### 5.15
+- 컴포넌트 재사용 할 때 함수 매개변수로 children 적어주면 저절로 이 전에서 해당 컴포넌트를 불러낼 때 모든 내용이 다 들어간 상태로 재사용 됨.
+   - 이미지 첨부에 예시 있음
+
+### 5.17
+- 상태값을 props로 전달하면 되는데 만약이게 depth가 10인 컴포넌트까지 내려가면 곤란해지므로 contextAPI사용
+   - 번번히 업데이트 되는 상태는 사용하면 XXXX -> 언어설정, 로그인같은 경우만 사용
+      - 자주 데이터 변경이 일어나는 경우에는 필요한 곳에서만 API를 사용하면 됨.
+
+### 5.18 다크모드
+- ContextAPI사용하는 법
+   - 1. jsx파일 생성
+   - 2. export const 파일명Context = createContext();
+   - 3. export function 파일명Provider({children}){
+   const [자식 컴포넌트까지 영향이 갈 변수,set함수] = useState(초기값);
+   const 자식 컴포넌트까지 영향이 갈 함수 = () => 사용할 함수 내용
+   return <파일명Context.Provider value={{자식 컴포넌트까지 영향이 갈 변수, 자식 컴포넌트까지 영향이 갈 함수}}>{children}</파일명Context.Provider>}
+   - 4. 쓰고싶은 컴포넌트 가서 const {자식 컴포넌트까지 영향이 갈 변수, 자식 컴포넌트까지 영향이 갈 함수} = useContext(파일명Context);
+   - 5. 4번에서 선언해준 변수, 함수를 원하는대로 쓰면 됨.
+   
+### 5.20 ->코드 안받아적음 나중에 다시 보기
+- 성능개선 할 때는 useCallback(), memo()를 써서 같은 상태가 전달되면 re-render가 안되도록하는건데
+
+### 5.22
+- fetch함수에서 .catch().finally()함수 사용 가능.
